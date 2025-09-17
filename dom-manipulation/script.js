@@ -5,7 +5,7 @@ let quotes = [ { text: "The journey of a thousand miles begins with a single ste
   { text: "Stay hungry, stay foolish.", 
     category: "Inspiration" }
 ];
-function showRandomQuote(){
+function displayRandomQuote(){
     // Generate random index
    let randomIndex = Math.floor(Math.random()* quotes.length);
    
@@ -16,4 +16,4 @@ function showRandomQuote(){
    document.getElementById("quoteDisplay").innerText = 
    `"${randomQuote.text}" - ${randomQuote.category}`;
 }
-document.getElementById("newQuote").addEventListener("click", showRandomQuote);
+document.getElementById("newQuote").addEventListener("click",displayRandomQuote);
