@@ -10,10 +10,10 @@ function displayRandomQuote(){
    let randomIndex = Math.floor(Math.random()* quotes.length);
    
    // select quote at that index
-   let randomQuote = quotes[randomIndex]
+   let showRandomQuote = quotes[randomIndex]
 
    // Display in the DOM
    document.getElementById("quoteDisplay").innerText = 
-   `"${randomQuote.text}" - ${randomQuote.category}`;
+   `"${showRandomQuote.text}" - ${showRandomQuote.category}`;
 }
 document.getElementById("newQuote").addEventListener("click",displayRandomQuote);
