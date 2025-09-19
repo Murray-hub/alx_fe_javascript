@@ -17,3 +17,29 @@ function displayRandomQuote(){
    `"${showRandomQuote.text}" - ${showRandomQuote.category}`;
 }
 document.getElementById("newQuote").addEventListener("click",displayRandomQuote);
+function createAddQuoteForm(){
+  let form = document.createElement("form");
+  //Quote Text Input
+  let TextInput = document.createElement("input");
+  TextInput.placeholder = " Enter quote";
+  form.appendChild(TextInput);
+  
+  //Category input
+  let  categoryInput = document.createElement("input");
+  categoryInput.placeholder = "Category";
+  form.appendChild(categoryInput);
+  
+  //Add Quote
+  let addButton = document.createElement("button");
+  addButton.innerText = "Add Quote";
+  form.appendChild(addButton);
+  form.addEventListener("submit", function(e){
+    e.preventDefault();
+    quotes.push({text:TextInput.value, category:categoryInput.value})
+     alert("quote added!");
+      TextInput.value = "";
+   categoryInput.value = "";
+  });
+ document.getElementById("quoteDisplay").appendChild(form);
+}
+createAddQuoteForm();
