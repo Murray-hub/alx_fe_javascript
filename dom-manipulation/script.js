@@ -1,10 +1,14 @@
-let quotes = [ { text: "The journey of a thousand miles begins with a single step.",
+let quotes = JSON.parse((localStorage.getItem("quotes"))) || [ { text: "The journey of a thousand miles begins with a single step.",
      category: "Motivation" },
   { text: "Code is like humor. When you have to explain it, it’s bad.", 
     category: "Programming" },
   { text: "Stay hungry, stay foolish.", 
-    category: "Inspiration" }
+    category: "Inspiration" },
+    {text: "Take one step at at the time.",  category:"Motivation"},
 ];
+function saveQuotes(){
+  localStorage.setItem("quotes",JSON.stringify(quotes));
+}
 function displayRandomQuote(){
     // Generate random index
    let randomIndex = Math.floor(Math.random()* quotes.length);
@@ -16,7 +20,6 @@ function displayRandomQuote(){
    document.getElementById("quoteDisplay").innerHTML = 
    `"${showRandomQuote.text}" - ${showRandomQuote.category}`;
 }
-document.getElementById("newQuote").addEventListener("click",displayRandomQuote);
 function createAddQuoteForm(){
   let form = document.createElement("form");
   //Quote Text Input
@@ -36,10 +39,12 @@ function createAddQuoteForm(){
   form.addEventListener("submit", function(e){
     e.preventDefault();
     quotes.push({text:TextInput.value, category:categoryInput.value})
+    saveQuotes();
      alert("quote added!");
       TextInput.value = "";
    categoryInput.value = "";
   });
  document.getElementById("quoteDisplay").appendChild(form);
 }
+document.getElementById("newQuote").addEventListener("click",displayRandomQuote);
 createAddQuoteForm();
